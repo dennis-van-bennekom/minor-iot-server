@@ -35,7 +35,7 @@
     setInterval(function() {
         $.ajax({
             type: 'GET',
-            url: domains['dennis'] + '/ldr.txt',
+            url: domains['dennis'] + '/getldr.php',
             success: function(data) {
                 $('.js-values.js-dennis').text(data);
             }
@@ -43,7 +43,7 @@
         
          $.ajax({
             type: 'GET',
-            url: domains['tom'] + '/ldr.txt',
+            url: domains['tom'] + '/getldr.php',
             success: function(data) {
                 $('.js-values.js-tom').text(data);
             }
@@ -51,7 +51,7 @@
         
          $.ajax({
             type: 'GET',
-            url: domains['tijs'] + '/ldr.txt',
+            url: domains['tijs'] + '/getldr.php',
             success: function(data) {
                 $('.js-values.js-tijs').text(data);
             }
