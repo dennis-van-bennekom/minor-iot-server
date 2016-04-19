@@ -3,9 +3,9 @@
     var $off = $('.js-off');
     
     var domains = {
-        'dennis': 'http://iot.dennisvanbennekom.com/light.php',
-        'tom': 'http://work3gether.com/IoT/light.php',
-        'tijs': 'http://tijsluitse.com/iot/light.php'
+        'dennis': 'http://iot.dennisvanbennekom.com',
+        'tom': 'http://work3gether.com/IoT',
+        'tijs': 'http://tijsluitse.com/iot'
     }
     
     $on.on('click', function(e) {
@@ -15,7 +15,7 @@
         
         $.ajax({
             type: 'POST',
-            url: domains[name],
+            url: domains[name] + '/light.php',
             data: { light: 'on' }
         });
     });
@@ -27,8 +27,34 @@
         
         $.ajax({
             type: 'POST',
-            url: domains[name],
+            url: domains[name] + '/light.php',
             data: { light: 'off' }
         });
     });
+    
+    setInterval(function() {
+        $.ajax({
+            type: 'GET',
+            url: domains['dennis'] + '/ldr.txt',
+            success: function(data) {
+                $('.js-values.js-dennis').text(data);
+            }
+        });
+        
+         $.ajax({
+            type: 'GET',
+            url: domains['tom'] + '/ldr.txt',
+            success: function(data) {
+                $('.js-values.js-tom').text(data);
+            }
+        });
+        
+         $.ajax({
+            type: 'GET',
+            url: domains['tijs'] + '/ldr.txt',
+            success: function(data) {
+                $('.js-values.js-tijs').text(data);
+            }
+        });
+    }, 1000);
 }());
